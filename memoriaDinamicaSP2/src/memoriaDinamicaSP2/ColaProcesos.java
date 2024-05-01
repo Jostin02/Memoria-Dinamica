@@ -1,5 +1,8 @@
 package memoriaDinamicaSP2;
 
+import javax.swing.JFrame;
+import java.awt.event.*;
+
 /**
  * @author Jenny<morales
  */
@@ -7,12 +10,38 @@ public class ColaProcesos {
 	private NodoCola primero;
 	private NodoCola fin;
 	private int tamanioCola;
+	private int memoriaT = 0;
+	private int memoriaSo = 0;
 	
+	
+	public int getMemoriaT() {
+		return memoriaT;
+	}
+
+
+	public void setMemoriaT(int memoriaT) {
+		this.memoriaT = memoriaT;
+	}
+
+
+	public int getMemoriaSo() {
+		return memoriaSo;
+	}
+
+
+	public void setMemoriaSo(int memoriaSo) {
+		this.memoriaSo = memoriaSo;
+	}
+
+
 	//Constructor
-	public void ColaProcessos() {
+	public void ColaProcessos(int memoriaT , int memoriaSo) {
 		primero = null;
 		fin = null;
 		tamanioCola = 0;
+		this.memoriaT = memoriaT;
+		this.memoriaSo = memoriaSo;
+		
 	}
 	
 	
@@ -41,4 +70,22 @@ public class ColaProcesos {
 		}
 		tamanioCola++;
 	}
+	
+	/**
+	 * Método para imprimir la cola 
+	 */
+	public void mostrarProcesoCola() {
+		NodoCola auxCola = primero;
+		System.out.println("***************COLA PROCESOS*********************");
+		System.out.println("Memoria total: " + memoriaT);
+		System.out.println("Memoria Sistema OP: " + memoriaSo);
+		while (auxCola != null) {
+			System.out.println("[" + auxCola.getProceso().toString() + " ]" );
+			auxCola = auxCola.getSiguiente();
+
+		}
+	}
+	
+
+	
 }
